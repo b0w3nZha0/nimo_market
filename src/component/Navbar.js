@@ -11,6 +11,7 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
 import SearchIcon from '@mui/icons-material/Search';
+import GlobalData from './GlobalData';
 
 const pages = ['Cryptocurrencies', 'Exchanges', 'Products', 'Learn'];
 
@@ -28,110 +29,112 @@ const Navbar = () => {
 
   return (
     <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-            <CurrencyBitcoinIcon 
-                sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} 
-                fontSize='large'/>
+        
 
-            <Typography
-                variant="h5"
-                noWrap
-                component="a"
-                href="/"
-                sx={{
-                mr: 2,
-                display: { xs: 'none', md: 'flex' },
-                fontFamily: 'monospace',
-                fontWeight: 700,
-                letterSpacing: '.3rem',
-                color: 'inherit',
-                textDecoration: 'none',
-                }} 
-            >
-                {webTitle}
-            </Typography>
+        <Container maxWidth="xl">
+            <Toolbar disableGutters>
+                <CurrencyBitcoinIcon 
+                    sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} 
+                    fontSize='large'/>
 
-            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-                <IconButton
-                    size="large"
-                    aria-label="account of current user"
-                    aria-controls="menu-appbar"
-                    aria-haspopup="true"
-                    onClick={handleOpenNavMenu}
-                    color="inherit"
-                >
-                    <MenuIcon />
-                </IconButton>
-
-                <Menu
-                    id="menu-appbar"
-                    anchorEl={anchorElNav}
-                    anchorOrigin={{
-                        vertical: 'bottom',
-                        horizontal: 'left',
-                    }}
-                    keepMounted
-                    transformOrigin={{
-                        vertical: 'top',
-                        horizontal: 'left',
-                    }}
-                    open={Boolean(anchorElNav)}
-                    onClose={handleCloseNavMenu}
+                <Typography
+                    variant="h5"
+                    noWrap
+                    component="a"
+                    href="/"
                     sx={{
-                        display: { xs: 'block', md: 'none' },
+                    mr: 2,
+                    display: { xs: 'none', md: 'flex' },
+                    fontFamily: 'monospace',
+                    fontWeight: 700,
+                    letterSpacing: '.3rem',
+                    color: 'inherit',
+                    textDecoration: 'none',
+                    }} 
+                >
+                    {webTitle}
+                </Typography>
+
+                <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                    <IconButton
+                        size="large"
+                        aria-label="account of current user"
+                        aria-controls="menu-appbar"
+                        aria-haspopup="true"
+                        onClick={handleOpenNavMenu}
+                        color="inherit"
+                    >
+                        <MenuIcon />
+                    </IconButton>
+
+                    <Menu
+                        id="menu-appbar"
+                        anchorEl={anchorElNav}
+                        anchorOrigin={{
+                            vertical: 'bottom',
+                            horizontal: 'left',
+                        }}
+                        keepMounted
+                        transformOrigin={{
+                            vertical: 'top',
+                            horizontal: 'left',
+                        }}
+                        open={Boolean(anchorElNav)}
+                        onClose={handleCloseNavMenu}
+                        sx={{
+                            display: { xs: 'block', md: 'none' },
+                        }}
+                    >
+                        {pages.map((page) => (
+                            <MenuItem key={page} onClick={handleCloseNavMenu}>
+                                <Typography textAlign="center">{page}</Typography>
+                            </MenuItem>
+                        ))}
+                    </Menu>
+                </Box>
+
+                <CurrencyBitcoinIcon 
+                    sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} 
+                    fontSize='large'/>
+
+                <Typography
+                    variant="h5"
+                    noWrap
+                    component="a"
+                    href="/"
+                    sx={{
+                    mr: 2,
+                    display: { xs: 'flex', md: 'none' },
+                    flexGrow: 1,
+                    fontFamily: 'monospace',
+                    fontWeight: 700,
+                    letterSpacing: '.3rem',
+                    color: 'inherit',
+                    textDecoration: 'none',
                     }}
                 >
+                    {webTitle}
+                </Typography>
+
+                <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                     {pages.map((page) => (
-                        <MenuItem key={page} onClick={handleCloseNavMenu}>
-                        <Typography textAlign="center">{page}</Typography>
-                        </MenuItem>
+                    <Button
+                        key={page}
+                        onClick={handleCloseNavMenu}
+                        sx={{ my: 2, color: 'white', display: 'block' }}
+                    >
+                        {page}
+                    </Button>
                     ))}
-                </Menu>
-            </Box>
-
-            <CurrencyBitcoinIcon 
-                sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} 
-                fontSize='large'/>
-
-            <Typography
-                variant="h5"
-                noWrap
-                component="a"
-                href="/"
-                sx={{
-                mr: 2,
-                display: { xs: 'flex', md: 'none' },
-                flexGrow: 1,
-                fontFamily: 'monospace',
-                fontWeight: 700,
-                letterSpacing: '.3rem',
-                color: 'inherit',
-                textDecoration: 'none',
-                }}
-            >
-                {webTitle}
-            </Typography>
-
-            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                {pages.map((page) => (
-                <Button
-                    key={page}
-                    onClick={handleCloseNavMenu}
-                    sx={{ my: 2, color: 'white', display: 'block' }}
-                >
-                    {page}
-                </Button>
-                ))}
-            </Box>
-            
-            <Box sx={{ flexGrow: 0 }}>
-                <IconButton sx={{ p: 0 }}>
-                    <SearchIcon color=''/>
-                </IconButton>
-            </Box>
-        </Toolbar>
-      </Container>
+                </Box>
+                
+                <Box sx={{ flexGrow: 0 }}>
+                    <IconButton sx={{ p: 0 }}>
+                        <SearchIcon color=''/>
+                    </IconButton>
+                </Box>
+            </Toolbar>
+        </Container>
     </AppBar>
   );
 }
