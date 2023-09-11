@@ -7,7 +7,7 @@ const Landing = () => {
 
     return(
         <div className='Landing'>
-            <Container maxWidth={''}>
+            <Container>
                 <LandingTitle />
                 <CoinsTable />    
             </Container>

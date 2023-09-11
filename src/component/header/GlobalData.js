@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Container from '@mui/material/Container';
-import { Box, Grid, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { useEffect } from 'react';
 import axios from 'axios';
 import CurrencyFormat from 'react-currency-format';
@@ -43,7 +43,7 @@ const GlobalData = () => {
     };
 
     return (
-        <Container maxWidth='lg'>
+        <Container maxWidth='lg' >
             <Box
                 sx={{
                     flexDirection: 'row',
@@ -54,7 +54,7 @@ const GlobalData = () => {
                 }}
             >
                 <Typography>
-                    {globalData.active_cryptocurrencies}
+                    Crypto: {globalData.active_cryptocurrencies}
                 </Typography>
 
                 <Typography>Exchanges: {globalData.markets}</Typography>
