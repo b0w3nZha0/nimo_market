@@ -8,6 +8,7 @@ import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { CoinInfoURL, CoinMarketDataLayout } from '../component/coin/CoinLayout';
 import HistoryChart from '../component/coin/HistoryChart';
+import CoinOverview from '../component/coin/CoinInfo';
 
 
 const CoinDetails = () => {
@@ -15,6 +16,7 @@ const CoinDetails = () => {
   const [coin, setCoin] = useState();
   const [coinPrice, setCoinPrice] = useState(0);
   const [priceChangeH, setPriceChangeH] = useState(0);
+  const [maxSupply, setMaxSupply] = useState();
 
   const fetchCoin = async () => {
     try {
@@ -24,7 +26,7 @@ const CoinDetails = () => {
       setCoin(data);
       setCoinPrice(data.market_data.current_price.usd);
       setPriceChangeH(data.market_data.price_change_percentage_1h_in_currency.usd);
-
+      setMaxSupply(data.market_data.max_supply);
     } catch (err) {
       console.log(`Error fetching ${id} coin details: ` + err);
     }
@@ -46,7 +48,7 @@ const CoinDetails = () => {
         alignItems='center'
       >
         {/* coin's basic data & info */}
-        <Grid container spacing={2} >
+        <Grid container spacing={2} marginY={4}>
           {/* left colum, basic data */}
           <Grid item xs={12} lg={8}>
             <Container>
@@ -150,7 +152,7 @@ const CoinDetails = () => {
 
                     <Grid item>
                       <Typography color={'grey'}>
-                        Total supply: {formatNum(coin?.market_data.total_supply, 0, false)}
+                        Max supply: {formatNum(!maxSupply? 0 : maxSupply, 0, false)}
                       </Typography>
                     </Grid>
                   </Grid>
@@ -305,8 +307,18 @@ const CoinDetails = () => {
           </Grid>
         </Grid>
 
-        <Grid container spacing={2} >
-          <HistoryChart />
+        <Grid container spacing={2} marginY={4}>
+          <Container>
+           <HistoryChart />
+          </Container>
+          
+        </Grid>
+
+        <Grid container spacing={2} marginY={4}>
+          <Container>
+            <CoinOverview />
+          </Container>
+          
         </Grid>
 
       </Grid>

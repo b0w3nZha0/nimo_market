@@ -1,6 +1,7 @@
-import { Box, Button, Chip, Divider, Grid, Typography } from '@mui/material';
+import { Box, Button, Card, CardContent, Chip, Divider, Grid, Skeleton, Typography } from '@mui/material';
 import { formatCurrency, formatNum } from '../header/GlobalData';
-import { Link } from 'react-router-dom';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import TwitterIcon from '@mui/icons-material/Twitter';
 
 export const CoinMarketDataLayout = ({ title, num, type }) => {
   return (
@@ -32,7 +33,7 @@ export const CoinMarketDataLayout = ({ title, num, type }) => {
 
 export const CoinInfoURL = ({ title, name, link }) => {
 
-  const handleClick = () =>{
+  const handleClick = () => {
     window.location.href = link;
   }
 
@@ -52,5 +53,36 @@ export const CoinInfoURL = ({ title, name, link }) => {
       </Grid>
 
     </Grid>
+  )
+}
+
+export const CoinOverviewCard = ({title, num, text}) => {
+  return (
+    <Card sx={{ minWidth: 275 }}>
+      <CardContent>
+        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+          {title}
+        </Typography>
+        <Typography variant={'h4'} fontWeight={'bold'} sx={{ mb: 1.5 }}>
+          { text === 'Twitter Followers' 
+            ? (<TwitterIcon color='primary' fontSize='large' />) 
+            : (<GitHubIcon fontSize='large' />)}
+          
+          {formatNum(num, 0, false)}
+        </Typography>
+
+        <Typography fontWeight={'bold'} fontStyle={'italic'}>
+          {text}
+        </Typography>
+      </CardContent>
+    </Card>
+  )
+}
+
+export const PlaceHolder = () => {
+  return(
+    <Box>
+      <Skeleton height={500}/>
+    </Box>
   )
 }
