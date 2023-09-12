@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import Landing from './component/page/Landing';
+import Landing from './page/Landing';
 import Header from './component/header/Header';
-import CoinDetails from './component/page/CoinDetail';
+import CoinDetails from './page/CoinDetail';
 import { makeStyles } from '@mui/material';
 import { color, minHeight } from '@mui/system';
 import { createTheme, ThemeProvider } from '@mui/material/styles';

@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import CurrencyFormat from 'react-currency-format';
 import { useState } from 'react';
-import { GlobalCoinsData } from '../config/api';
+import { GlobalCoinsData } from '../../config/api';
 
 export const formatCurrency = (num, decimal, fixed) => {
     return (

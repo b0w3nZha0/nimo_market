@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { CoinsMarket } from '../config/api';
+import { CoinsMarket } from '../../config/api';
 import axios from 'axios';
 import { Container } from '@mui/system';
 import {
@@ -37,7 +37,8 @@ const CoinsTable = () => {
     const fetchCoinsTable = async () => {
         try {
             setLoading(true);
-            const res = await axios.get(CoinsMarket(100, page));
+            //const res = await axios.get(CoinsMarket(100, page));
+            const res = await axios.get();
             const data = res.data;
             console.log(data);
             setCoins(data);
