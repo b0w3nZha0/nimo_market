@@ -20,6 +20,18 @@ export const formatCurrency = (num, decimal, fixed) => {
     );
 };
 
+export const formatNum = (num, decimal, fixed) => {
+    return (
+        <CurrencyFormat
+            value={num}
+            displayType={'text'}
+            thousandSeparator={true}
+            decimalScale={decimal}
+            fixedDecimalScale={fixed}
+        />
+    );
+};
+
 const GlobalData = () => {
     const [globalData, setGlobalData] = useState([]);
     const [marketCap, setMarketCap] = useState([]);
