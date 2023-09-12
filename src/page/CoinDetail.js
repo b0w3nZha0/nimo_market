@@ -7,6 +7,7 @@ import { formatCurrency, formatNum } from '../component/header/GlobalData';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { CoinInfoURL, CoinMarketDataLayout } from '../component/coin/CoinLayout';
+import HistoryChart from '../component/coin/HistoryChart';
 
 
 const CoinDetails = () => {
@@ -44,7 +45,7 @@ const CoinDetails = () => {
         justifyContent='flex-start'
         alignItems='center'
       >
-        coin's basic data & info
+        {/* coin's basic data & info */}
         <Grid container spacing={2} >
           {/* left colum, basic data */}
           <Grid item xs={12} lg={8}>
@@ -302,6 +303,10 @@ const CoinDetails = () => {
             </Container>
 
           </Grid>
+        </Grid>
+
+        <Grid container spacing={2} >
+          <HistoryChart />
         </Grid>
 
       </Grid>
