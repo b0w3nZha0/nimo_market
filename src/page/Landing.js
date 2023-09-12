@@ -1,6 +1,6 @@
 import { Container } from '@mui/material';
-import LandingTitle from '../landing/LandingTitle';
-import CoinsTable from '../landing/CoinsTable';
+import LandingTitle from '../component/landing/LandingTitle';
+import CoinsTable from '../component/landing/CoinsTable';
 
 const Landing = () => {
 
