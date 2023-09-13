@@ -7,6 +7,7 @@ import CurrencyFormat from 'react-currency-format';
 import { useState } from 'react';
 import { GlobalCoinsData } from '../../config/api';
 
+// Function to format the num to currency
 export const formatCurrency = (num, decimal, fixed) => {
     return (
         <CurrencyFormat
@@ -20,6 +21,7 @@ export const formatCurrency = (num, decimal, fixed) => {
     );
 };
 
+// Function to format the num with separator
 export const formatNum = (num, decimal, fixed) => {
     return (
         <CurrencyFormat
@@ -32,13 +34,16 @@ export const formatNum = (num, decimal, fixed) => {
     );
 };
 
+// Locate at the top of screen, show global market data
 const GlobalData = () => {
+
     const [globalData, setGlobalData] = useState([]);
     const [marketCap, setMarketCap] = useState([]);
     const [volume, setVolume] = useState([]);
 
     useEffect(() => {
         fetchGlobalData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const fetchGlobalData = async () => {
@@ -62,6 +67,7 @@ const GlobalData = () => {
                 alignItems="center"
                 spacing={3}
             >
+                {/* Total number of crypto currencies */}
                 <Box sx={{
                     flexDirection: 'row',
                     justifyContent: 'flex-start',
@@ -78,6 +84,7 @@ const GlobalData = () => {
                     </Typography>
                 </Box>
 
+                {/* Total market exchange */}
                 <Box sx={{
                     flexDirection: 'row',
                     justifyContent: 'flex-start',
@@ -94,6 +101,7 @@ const GlobalData = () => {
                     </Typography>
                 </Box>
 
+                {/* Total market cap */}
                 <Box sx={{
                     flexDirection: 'row',
                     justifyContent: 'flex-start',
@@ -110,6 +118,7 @@ const GlobalData = () => {
                     </Typography>
                 </Box>
 
+                {/* Volume within past 24h */}
                 <Box sx={{
                     flexDirection: 'row',
                     justifyContent: 'flex-start',
@@ -125,9 +134,7 @@ const GlobalData = () => {
                         {formatCurrency(volume.usd, 0, false)}
                     </Typography>
                 </Box>
-
             </Stack>
-
         </Container>
     );
 };

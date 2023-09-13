@@ -19,16 +19,16 @@ import {
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { formatCurrency } from '../header/GlobalData';
-
 import { SparkLineChart } from '@mui/x-charts';
 import styled from '@emotion/styled';
 
+// Display coins market data in table with pagination
 const CoinsTable = () => {
     const navigate = useNavigate();
 
     const [coins, setCoins] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [page, setPage] = useState('1');
+    const [page, setPage] = useState(1);
 
     useEffect(() => {
         fetchCoinsTable();
@@ -61,9 +61,9 @@ const CoinsTable = () => {
                 Cryptocurrency Prices by Market Cap
             </Typography>
 
-
-
             <Divider />
+
+            {/* display table if api is valid, otherwise show loading icon */}
             <TableContainer>
                 {loading ? (
                     <LinearProgress />
@@ -77,6 +77,7 @@ const CoinsTable = () => {
                                 justifyContent: 'center',
                             }}
                             count={100}
+                            page={page}
                             showFirstButton
                             showLastButton
                             onChange={(e, value) => {
@@ -84,9 +85,13 @@ const CoinsTable = () => {
                                 window.scroll(0, 450);
                                 console.log(value);
                             }}
+
                         />
+
+                        {/* Table section */}
                         <Table>
 
+                            {/* Table header */}
                             <TableHead>
                                 <TableRow>
                                     {[
@@ -102,7 +107,7 @@ const CoinsTable = () => {
                                     ].map((head) => (
                                         <TableCell
                                             key={head}
-                                            align={head === 'Coin' ? '' : 'right'}
+                                            align={head === 'Coin' ? 'left' : 'right'}
                                         >
                                             {head}
                                         </TableCell>
@@ -110,21 +115,22 @@ const CoinsTable = () => {
                                 </TableRow>
                             </TableHead>
 
+                            {/* Table body */}
                             <TableBody>
-
-
                                 {coins.map((coin) => {
                                     return (
                                         <TableRow
                                             onClick={() => navigate(`/coin/${coin.id}`)}
                                             className={coin.id}
                                             key={coin.name}
-                                        
+
                                         >
+                                            {/* Market cap rank */}
                                             <StyledTableCell align='right'>
                                                 <Typography>{coin.market_cap_rank}</Typography>
                                             </StyledTableCell>
 
+                                            {/* Coin's icon, name and symbol */}
                                             <StyledTableCell
                                                 component='th'
                                                 scope='row'
@@ -146,13 +152,14 @@ const CoinsTable = () => {
                                                         {coin.symbol}
                                                     </Typography>
                                                 </Stack>
-
                                             </StyledTableCell>
-
+                                                
+                                            {/* Coin's current price */}
                                             <StyledTableCell align='right'>
                                                 {formatCurrency(coin.current_price, 2, true)}
                                             </StyledTableCell>
-
+                                            
+                                            {/* Coin's 1h price change percentage */}
                                             <StyledTableCell
                                                 align='right'
                                                 style={{
@@ -167,7 +174,8 @@ const CoinsTable = () => {
                                                     %
                                                 </span>
                                             </StyledTableCell>
-
+                                            
+                                            {/* Coin's 24h price change percentage */}
                                             <StyledTableCell
                                                 align='right'
                                                 style={{
@@ -184,7 +192,8 @@ const CoinsTable = () => {
                                                     %
                                                 </span>
                                             </StyledTableCell>
-
+                                            
+                                            {/* Coin's 7d price change percentage */}
                                             <StyledTableCell
                                                 align='right'
                                                 style={{
@@ -199,24 +208,25 @@ const CoinsTable = () => {
                                                     %
                                                 </span>
                                             </StyledTableCell>
-
+                                            
+                                            {/* Coin's market cap */}
                                             <StyledTableCell align='right'>
                                                 {formatCurrency(coin.market_cap, 0, false)}
                                             </StyledTableCell>
-
+                                            
+                                            {/* Coin's total volume */}
                                             <StyledTableCell align='right'>
                                                 {formatCurrency(coin.total_volume, 0, false)}
                                             </StyledTableCell>
-
+                                            
+                                            {/* Coin's chart of price change in 7d */}
                                             <StyledTableCell align='right' width={'150'}>
-                                                <Box sx={{flexGrow: 1}}>
+                                                <Box sx={{ flexGrow: 1 }}>
                                                     <SparkLineChart
                                                         data={coin.sparkline_in_7d.price}
-                                                        height={'60'}
+                                                        height={60}
                                                     />
                                                 </Box>
-
-
                                             </StyledTableCell>
                                         </TableRow>
                                     );
@@ -224,13 +234,8 @@ const CoinsTable = () => {
                             </TableBody>
                         </Table>
                     </Box>
-
                 )}
             </TableContainer>
-
-
-
-
         </Container>
     );
 };

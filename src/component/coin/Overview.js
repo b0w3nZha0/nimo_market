@@ -1,13 +1,13 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { CoinPage } from '../../config/api';
-import { Accordion, AccordionDetails, AccordionSummary, Card, CardContent, Grid, Skeleton, Typography } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { Accordion, AccordionDetails, AccordionSummary, Grid, Typography } from '@mui/material';
+import axios from 'axios';
 import { Markup } from 'interweave';
-import { formatNum } from '../header/GlobalData';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { CoinPage } from '../../config/api';
 import { CoinOverviewCard, PlaceHolder } from './CoinLayout';
 
+// Overview section under chart on detail page 
 const Overview = () => {
   const { id } = useParams();
   const [coin, setCoin] = useState();
@@ -26,6 +26,7 @@ const Overview = () => {
 
   useEffect(() => {
     fetchCoin();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
@@ -35,6 +36,7 @@ const Overview = () => {
       justifyContent="center"
       alignItems="stretch"
     >
+      {/* Coin's description (from API) */}
       <Grid item marginBottom={5}>
         <Accordion>
           <AccordionSummary
@@ -44,6 +46,8 @@ const Overview = () => {
           >
             <Typography fontWeight={'bold'}>Description</Typography>
           </AccordionSummary>
+
+          {/* Using Markup to convert <a> into link within text */}
           <AccordionDetails>
             <Typography>
               <Markup content={coin?.description.en} />
@@ -52,63 +56,60 @@ const Overview = () => {
         </Accordion>
       </Grid>
 
+      {/* Coin's community and developer data */}
       <Grid item marginBottom={5}>
-        <Grid container>
-          <Grid item xs={6} lg={4}>
-            <CoinOverviewCard
-              title='Community Data'
-              num={coin?.community_data.twitter_followers}
-              text='Twitter Followers'
-            />
-          </Grid>
+        <Grid container
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center">
 
-          <Grid item xs={6} lg={4}>
-            <CoinOverviewCard
-              title='Developer Data'
-              num={coin?.developer_data.forks}
-              text='Forks'
-            />
-          </Grid>
+          {/* Community data, twitter followers */}
+          <CoinOverviewCard
+            title='Community Data'
+            num={coin?.community_data.twitter_followers}
+            text='Twitter Followers'
+          />
 
-          <Grid item xs={6} lg={4}>
-            <CoinOverviewCard
-              title='Developer Data'
-              num={coin?.developer_data.stars}
-              text='Stars'
-            />
-          </Grid>
+          {/* Developer data, github forks */}
+          <CoinOverviewCard
+            title='Developer Data'
+            num={coin?.developer_data.forks}
+            text='Forks'
+          />
 
-          <Grid item xs={6} lg={4}>
-            <CoinOverviewCard
-              title='Developer Data'
-              num={coin?.developer_data.subscribers}
-              text='Subscribers'
-            />
-          </Grid>
+          {/* Developer data, github stars */}
+          <CoinOverviewCard
+            title='Developer Data'
+            num={coin?.developer_data.stars}
+            text='Stars'
+          />
 
-          <Grid item xs={6} lg={4}>
-            <CoinOverviewCard
-              title='Developer Data'
-              num={coin?.developer_data.total_issues}
-              text='Total issues'
-            />
-          </Grid>
+          {/* Developer data, github subscribers */}
+          <CoinOverviewCard
+            title='Developer Data'
+            num={coin?.developer_data.subscribers}
+            text='Subscribers'
+          />
 
-          <Grid item xs={6} lg={4}>
-            <CoinOverviewCard
-              title='Developer Data'
-              num={coin?.developer_data.commit_count_4_weeks}
-              text='Commit count 4 weeks'
-            />
-          </Grid>
+          {/* Developer data, github total issues rised*/}
+          <CoinOverviewCard
+            title='Developer Data'
+            num={coin?.developer_data.total_issues}
+            text='Total issues'
+          />
+
+          {/* Developer data, github commit within past 4 weeks */}
+          <CoinOverviewCard
+            title='Developer Data'
+            num={coin?.developer_data.commit_count_4_weeks}
+            text='Commit count 4 weeks'
+          />
         </Grid>
       </Grid>
 
       <Grid item marginBottom={5}>
         <PlaceHolder />
         <PlaceHolder />
-
-
       </Grid>
 
     </Grid>
