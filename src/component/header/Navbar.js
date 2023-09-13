@@ -29,7 +29,7 @@ const Navbar = () => {
                             alignItems="center"
                             spacing={2}
                         >
-                            <img src={logo} alt={logo} height='45' />
+                            <img src={logo} alt='logo' height='45' />
                             <Typography variant='h4' fontWeight={'bold'} color={'black'}>
                                 {webTitle}
                             </Typography>
