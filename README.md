@@ -4,11 +4,10 @@ This project serves as Nimo Industries' code test, primarily designed to monitor
 
 The website has been deployed by **Vercel**. The link can be found at `About` section of repo.
 
-[TOC]
 
 ## Install Node.js & npm
 
-In order to run `**Nimo Market**` crypto currencies tracker, you have to install following components. If you already installed required components, please check support version and process to next section.
+In order to run `Nimo Market` crypto currencies tracker, you have to install following components. If you already installed required components, please check support version and process to next section.
 
 - The preferred version of `node` is version `v16.. and later`.
 
@@ -24,8 +23,8 @@ In order to run `**Nimo Market**` crypto currencies tracker, you have to install
 
 ## Run Application
 
-- When first running this application, you need to run `**npm install**` command first to install required packages needed to run the application. If the installation showing errors, please run `**npm install --force**` to install the packages. Sometimes the installation fails due to compatibility issues.
-- After installed all packages, simply run `**npm start**` to run the React.js application and the frontend application will be run on localhost with specific path of the port.
+- When first running this application, you need to run `npm install` command first to install required packages needed to run the application. If the installation showing errors, please run `npm install --force` to install the packages. Sometimes the installation fails due to compatibility issues.
+- After installed all packages, simply run `npm start` to run the React.js application and the frontend application will be run on localhost with specific path of the port.
 - The default port path is http://localhost:3000/
 
 
