@@ -58,7 +58,11 @@ export const CoinInfoURL = ({ title, name, link }) => {
 
 export const CoinOverviewCard = ({title, num, text}) => {
   return (
-    <Card sx={{ minWidth: 275 }}>
+    <Grid item xs={6} lg={4} container
+    direction="row"
+    justifyContent="center"
+    alignItems="center">
+      <Card sx={{ minWidth: 300, marginBottom: 2}} variant="outlined">
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           {title}
@@ -76,6 +80,8 @@ export const CoinOverviewCard = ({title, num, text}) => {
         </Typography>
       </CardContent>
     </Card>
+    </Grid>
+    
   )
 }
 
