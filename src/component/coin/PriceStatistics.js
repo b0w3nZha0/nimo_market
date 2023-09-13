@@ -7,7 +7,6 @@ const PriceStatistics = () => {
     <Container>
       <PlaceHolder />
       <PlaceHolder />
-      
     </Container>
   )
 }

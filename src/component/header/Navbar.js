@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import * as React from 'react';
 import logo from '../../assets/logo.png';
 
+// Navbar including logo and site name
 const Navbar = () => {
     const webTitle = "Nimo Market";
 
@@ -14,13 +15,13 @@ const Navbar = () => {
         <AppBar color='transparent' position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <Button 
-                        href="/" 
-                        style={{ 
-                                backgroundColor: 'transparent', 
-                                padding: '0',
-                                textTransform: 'none' }} 
-                        
+                    <Button
+                        href="/"
+                        style={{
+                            backgroundColor: 'transparent',
+                            padding: '0',
+                            textTransform: 'none'
+                        }}
                     >
                         <Stack
                             direction="row"
@@ -34,7 +35,6 @@ const Navbar = () => {
                             </Typography>
                         </Stack>
                     </Button>
-
                 </Toolbar>
             </Container>
         </AppBar>
