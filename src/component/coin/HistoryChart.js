@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { HisotryData } from '../../config/api';
 import axios from 'axios';
-import { Box, CircularProgress, Container, Grid, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material';
+import { Box, CircularProgress, Grid, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -49,7 +49,9 @@ const HistoryChart = () => {
 
   useEffect(() => {
     fetchHistoryData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [days])
+  
 
   const chartOptions = {
     responsive: true
@@ -78,59 +80,60 @@ const HistoryChart = () => {
   return (
     <Box>
 
-        <Grid
-          container
-          direction="row"
-          justifyContent="space-between"
-          alignItems="center"
-        >
-          <Grid item>
-            <Typography variant='h4'>
-              {id.toUpperCase()} Price Chart
-            </Typography>
-          </Grid>
-
-          <Grid item>
-          <ToggleButtonGroup
-          value={days}
-          onChange={handleDaysChange}
-          exclusive
-        >
-          <ToggleButton value='1' aria-label='24h history'>
-            24h
-          </ToggleButton>
-          <ToggleButton value='7' aria-label='7d history'>
-            7d
-          </ToggleButton>
-          <ToggleButton value='14' aria-label='14d history'>
-            14d
-          </ToggleButton>
-          <ToggleButton value='30' aria-label='30d history'>
-            30d
-          </ToggleButton>
-          <ToggleButton value='90' aria-label='90d history'>
-            90d
-          </ToggleButton>
-          <ToggleButton value='180' aria-label='180d history'>
-            180d
-          </ToggleButton>
-          <ToggleButton value='365' aria-label='1y history'>
-            1y
-          </ToggleButton>
-          <ToggleButton value='max' aria-label='Max history'>
-            Max
-          </ToggleButton>
-        </ToggleButtonGroup>
-          </Grid>
-
+      <Grid
+        container
+        direction="row"
+        justifyContent="space-between"
+        alignItems="center"
+      >
+        <Grid item>
+          <Typography variant='h4'>
+            {id.toUpperCase()} Price Chart
+          </Typography>
         </Grid>
-        
-        {!historyData ? (< CircularProgress />) : (
-          <Line
-            options={chartOptions}
-            data={chartData}
-          />
-        )}
+
+        <Grid item>
+          <ToggleButtonGroup
+            value={days}
+            onChange={handleDaysChange}
+            exclusive
+            color='warning'
+          >
+            <ToggleButton value='1' aria-label='24h history'>
+              24h
+            </ToggleButton>
+            <ToggleButton value='7' aria-label='7d history'>
+              7d
+            </ToggleButton>
+            <ToggleButton value='14' aria-label='14d history'>
+              14d
+            </ToggleButton>
+            <ToggleButton value='30' aria-label='30d history'>
+              30d
+            </ToggleButton>
+            <ToggleButton value='90' aria-label='90d history'>
+              90d
+            </ToggleButton>
+            <ToggleButton value='180' aria-label='180d history'>
+              180d
+            </ToggleButton>
+            <ToggleButton value='365' aria-label='1y history'>
+              1y
+            </ToggleButton>
+            <ToggleButton value='max' aria-label='Max history'>
+              Max
+            </ToggleButton>
+          </ToggleButtonGroup>
+        </Grid>
+
+      </Grid>
+
+      {!historyData ? (< CircularProgress />) : (
+        <Line
+          options={chartOptions}
+          data={chartData}
+        />
+      )}
 
     </Box>
   )
