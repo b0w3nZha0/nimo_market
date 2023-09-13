@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Container from '@mui/material/Container';
-import { Box, Typography } from '@mui/material';
+import { Box, Stack, Typography } from '@mui/material';
 import { useEffect } from 'react';
 import axios from 'axios';
 import CurrencyFormat from 'react-currency-format';
@@ -55,26 +55,156 @@ const GlobalData = () => {
     };
 
     return (
-        <Container maxWidth='lg' >
-            <Box
+        <Container maxWidth='xl' >
+            {/* <Box
                 sx={{
                     flexDirection: 'row',
-                    justifyContent: 'space-between',
+                    justifyContent: 'flex-start',
                     minWidth: 'md',
                     display: 'flex',
                     mr: 1,
+
                 }}
             >
-                <Typography>
-                    Crypto: {globalData.active_cryptocurrencies}
-                </Typography>
+                <Box sx={{
+                    flexDirection: 'row',
+                    justifyContent: 'flex-start',
+                    minWidth: 'md',
+                    display: 'flex',
+                    mr: 1,
+                }}>
+                    <Typography>
+                        Crypto:
+                    </Typography>
 
-                <Typography>Exchanges: {globalData.markets}</Typography>
+                    <Typography color={'primary'}>
+                        {globalData.active_cryptocurrencies}
+                    </Typography>
+                </Box>
 
-                <Typography>Market Cap: {formatCurrency(marketCap.usd, 0, false)} </Typography>
-   
-                <Typography>24h Vol: {formatCurrency(volume.usd, 0, false)}</Typography>
-            </Box>
+                <Box sx={{
+                    flexDirection: 'row',
+                    justifyContent: 'flex-start',
+                    minWidth: 'md',
+                    display: 'flex',
+                    mr: 1,
+                }}>
+                    <Typography>
+                        Exchanges:
+                    </Typography>
+
+                    <Typography color={'primary'}>
+                        {globalData.markets}
+                    </Typography>
+                </Box>
+
+                <Box sx={{
+                    flexDirection: 'row',
+                    justifyContent: 'flex-start',
+                    minWidth: 'md',
+                    display: 'flex',
+                    mr: 1,
+                }}>
+                    <Typography>
+                        Market Cap:
+                    </Typography>
+
+                    <Typography color={'primary'}>
+                        {formatCurrency(marketCap.usd, 0, false)}
+                    </Typography>
+                </Box>
+
+                <Box sx={{
+                    flexDirection: 'row',
+                    justifyContent: 'flex-start',
+                    minWidth: 'md',
+                    display: 'flex',
+                    mr: 1,
+                }}>
+                    <Typography>
+                        24h Vol:
+                    </Typography>
+
+                    <Typography color={'primary'}>
+                        {formatCurrency(volume.usd, 0, false)}
+                    </Typography>
+                </Box>
+
+            </Box> */}
+
+
+            <Stack
+                direction="row"
+                justifyContent="flex-start"
+                alignItems="center"
+                spacing={3}
+            >
+                <Box sx={{
+                    flexDirection: 'row',
+                    justifyContent: 'flex-start',
+                    minWidth: 'md',
+                    display: 'flex',
+                    mr: 1,
+                }}>
+                    <Typography>
+                        Crypto:
+                    </Typography>
+
+                    <Typography color={'primary'}>
+                        {globalData.active_cryptocurrencies}
+                    </Typography>
+                </Box>
+
+                <Box sx={{
+                    flexDirection: 'row',
+                    justifyContent: 'flex-start',
+                    minWidth: 'md',
+                    display: 'flex',
+                    mr: 1,
+                }}>
+                    <Typography>
+                        Exchanges:
+                    </Typography>
+
+                    <Typography color={'primary'}>
+                        {globalData.markets}
+                    </Typography>
+                </Box>
+
+                <Box sx={{
+                    flexDirection: 'row',
+                    justifyContent: 'flex-start',
+                    minWidth: 'md',
+                    display: 'flex',
+                    mr: 1,
+                }}>
+                    <Typography>
+                        Market Cap:
+                    </Typography>
+
+                    <Typography color={'primary'}>
+                        {formatCurrency(marketCap.usd, 0, false)}
+                    </Typography>
+                </Box>
+
+                <Box sx={{
+                    flexDirection: 'row',
+                    justifyContent: 'flex-start',
+                    minWidth: 'md',
+                    display: 'flex',
+                    mr: 1,
+                }}>
+                    <Typography>
+                        24h Vol:
+                    </Typography>
+
+                    <Typography color={'primary'}>
+                        {formatCurrency(volume.usd, 0, false)}
+                    </Typography>
+                </Box>
+
+            </Stack>
+
         </Container>
     );
 };

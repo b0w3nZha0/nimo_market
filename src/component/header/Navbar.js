@@ -1,19 +1,11 @@
-import * as React from 'react';
-import { useState } from 'react';
+import { Stack } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
-import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
-import SearchIcon from '@mui/icons-material/Search';
-
-const pages = ['Cryptocurrencies', 'Exchanges', 'Products', 'Learn'];
+import Container from '@mui/material/Container';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import * as React from 'react';
+import logo from '../../assets/logo.png';
 
 const Navbar = () => {
     const webTitle = "Nimo Market";
@@ -22,27 +14,26 @@ const Navbar = () => {
         <AppBar color='transparent' position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <CurrencyBitcoinIcon
-                        //sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}
-                        fontSize='large' />
-
-                    <Typography
-                        variant="h5"
-                        noWrap
-                        component="a"
-                        href="/"
-                        sx={{
-                            mr: 2,
-                            //display: { xs: 'none', md: 'flex' },
-                            fontFamily: 'monospace',
-                            fontWeight: 700,
-                            letterSpacing: '.3rem',
-                            color: 'inherit',
-                            textDecoration: 'none',
-                        }}
+                    <Button 
+                        href="/" 
+                        style={{ 
+                                backgroundColor: 'transparent', 
+                                padding: '0',
+                                textTransform: 'none' }} 
+                        
                     >
-                        {webTitle}
-                    </Typography>
+                        <Stack
+                            direction="row"
+                            justifyContent="flex-start"
+                            alignItems="center"
+                            spacing={2}
+                        >
+                            <img src={logo} alt={logo} height='45' />
+                            <Typography variant='h4' fontWeight={'bold'} color={'black'}>
+                                {webTitle}
+                            </Typography>
+                        </Stack>
+                    </Button>
 
                 </Toolbar>
             </Container>

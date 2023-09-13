@@ -27,10 +27,11 @@ const CoinsTable = () => {
 
     const [coins, setCoins] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [page, setPage] = useState(1);
+    const [page, setPage] = useState('1');
 
     useEffect(() => {
         fetchCoinsTable();
+         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [page]);
 
     const fetchCoinsTable = async () => {

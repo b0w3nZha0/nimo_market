@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { CoinPage } from '../config/api';
-import { Box, Button, Chip, Container, Divider, Grid, LinearProgress, Link, Stack, Typography } from '@mui/material';
+import { Box, Chip, Container, Divider, Grid, LinearProgress, Stack, Typography } from '@mui/material';
 import axios from 'axios';
 import { formatCurrency, formatNum } from '../component/header/GlobalData';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
@@ -34,7 +34,8 @@ const CoinDetails = () => {
 
   useEffect(() => {
     fetchCoin();
-  }, [])
+     // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[id])
 
 
 
@@ -63,6 +64,7 @@ const CoinDetails = () => {
                 justifyContent="flex-start"
                 alignItems="center"
                 spacing={1}
+                marginTop={2}
               >
                 <img src={coin?.image.large} alt={coin?.name} height='40' />
                 <Typography component="div" variant='h5' fontWeight={'bold'}>
@@ -81,6 +83,7 @@ const CoinDetails = () => {
                 justifyContent="flex-start"
                 alignItems="center"
                 spacing={1}
+                marginTop={2}
               >
                 <Typography variant='h4'>
                   {formatCurrency(coinPrice, 2, true)}
@@ -106,7 +109,7 @@ const CoinDetails = () => {
 
               {/* Circulating supply */}
               <Grid container spacing={2}>
-                <Grid item xs={12} lg={6}>
+                <Grid item xs={12} lg={6} marginTop={2}>
                   {/* title */}
                   <Grid
                     container
@@ -145,13 +148,13 @@ const CoinDetails = () => {
                     alignItems="center"
                   >
                     <Grid item>
-                      <Typography color={'grey'}>
+                      <Typography color={'grey'} variant='body2'>
                         Total supply: {formatNum(coin?.market_data.total_supply, 0, false)}
                       </Typography>
                     </Grid>
 
                     <Grid item>
-                      <Typography color={'grey'}>
+                      <Typography color={'grey'} variant='body2'>
                         Max supply: {formatNum(!maxSupply? 0 : maxSupply, 0, false)}
                       </Typography>
                     </Grid>
@@ -160,9 +163,9 @@ const CoinDetails = () => {
               </Grid>
 
               {/* market data */}
-              <Grid container spacing={2}>
+              <Grid container spacing={2} marginTop={1}>
                 {/* left column */}
-                <Grid item xs={12} lg={6}>
+                <Grid item xs={12} lg={6} >
                   <CoinMarketDataLayout
                     title={'Market Cap'}
                     num={coin?.market_data.market_cap.usd}

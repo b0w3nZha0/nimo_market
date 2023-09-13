@@ -3,20 +3,27 @@ import './App.css';
 import Landing from './page/Landing';
 import Header from './component/header/Header';
 import CoinDetails from './page/CoinDetail';
-import { makeStyles } from '@mui/material';
-import { color, minHeight } from '@mui/system';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider, createTheme } from '@mui/material';
+
+const theme = createTheme({
+	typography: {
+		fontFamily: `"Montserrat", "Helvetica", "Arial", sans-serif`
+	}
+})
 
 function App() {
 	return (
 		<BrowserRouter>
-			<div className='App'>
-				<Header />
-				<Routes>
-					<Route path='/' element={<Landing />} />
-					<Route path='/coin/:id' element={<CoinDetails />} />
-				</Routes>
-			</div>
+			<ThemeProvider theme={theme}>
+				<div className='App'>
+					<Header />
+					<Routes>
+						<Route path='/' element={<Landing />} />
+						<Route path='/coin/:id' element={<CoinDetails />} />
+					</Routes>
+				</div>
+			</ThemeProvider>
+
 		</BrowserRouter>
 	);
 }
