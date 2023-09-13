@@ -104,7 +104,7 @@ const CoinsTable = () => {
                                     ].map((head) => (
                                         <TableCell
                                             key={head}
-                                            align={head === 'Coin' ? '' : 'right'}
+                                            align={head === 'Coin' ? 'left' : 'right'}
                                         >
                                             {head}
                                         </TableCell>
