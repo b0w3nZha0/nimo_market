@@ -77,6 +77,7 @@ const CoinsTable = () => {
                                 justifyContent: 'center',
                             }}
                             count={100}
+                            page={page}
                             showFirstButton
                             showLastButton
                             onChange={(e, value) => {
