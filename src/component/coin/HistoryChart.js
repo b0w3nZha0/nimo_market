@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { HisotryData } from '../../config/api';
 import axios from 'axios';
-import { Box, CircularProgress, Container, Grid, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material';
+import { Box, CircularProgress, Grid, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -49,7 +49,9 @@ const HistoryChart = () => {
 
   useEffect(() => {
     fetchHistoryData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [days])
+  
 
   const chartOptions = {
     responsive: true
