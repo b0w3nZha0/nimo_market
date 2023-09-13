@@ -58,6 +58,9 @@ const CoinDetails = () => {
                 variant="outlined"
                 color="warning"
                 label={`Rank #${coin?.market_cap_rank}`}
+                sx={{
+                  fontWeight: 'bold'
+                }}
               />
               <Stack
                 direction="row"
