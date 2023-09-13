@@ -28,7 +28,7 @@ const CoinsTable = () => {
 
     const [coins, setCoins] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [page, setPage] = useState('1');
+    const [page, setPage] = useState(1);
 
     useEffect(() => {
         fetchCoinsTable();
@@ -84,6 +84,7 @@ const CoinsTable = () => {
                                 window.scroll(0, 450);
                                 console.log(value);
                             }}
+                            
                         />
                         <Table>
 
