@@ -139,7 +139,7 @@ const CoinDetails = () => {
                     <LinearProgress
                       color='warning'
                       variant="determinate"
-                      value={50}
+                      value={(coin?.market_data.circulating_supply / coin?.market_data.total_supply) * 100}
                     />
                   </Box>
 
