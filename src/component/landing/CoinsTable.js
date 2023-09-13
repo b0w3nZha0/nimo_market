@@ -28,7 +28,7 @@ const CoinsTable = () => {
 
     const [coins, setCoins] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [page, setPage] = useState('1');
+    const [page, setPage] = useState(1);
 
     useEffect(() => {
         fetchCoinsTable();
@@ -77,6 +77,7 @@ const CoinsTable = () => {
                                 justifyContent: 'center',
                             }}
                             count={100}
+                            page={page}
                             showFirstButton
                             showLastButton
                             onChange={(e, value) => {
@@ -84,6 +85,7 @@ const CoinsTable = () => {
                                 window.scroll(0, 450);
                                 console.log(value);
                             }}
+                            
                         />
                         <Table>
 
@@ -102,7 +104,7 @@ const CoinsTable = () => {
                                     ].map((head) => (
                                         <TableCell
                                             key={head}
-                                            align={head === 'Coin' ? '' : 'right'}
+                                            align={head === 'Coin' ? 'left' : 'right'}
                                         >
                                             {head}
                                         </TableCell>
@@ -212,7 +214,7 @@ const CoinsTable = () => {
                                                 <Box sx={{flexGrow: 1}}>
                                                     <SparkLineChart
                                                         data={coin.sparkline_in_7d.price}
-                                                        height={'60'}
+                                                        height={60}
                                                     />
                                                 </Box>
 
