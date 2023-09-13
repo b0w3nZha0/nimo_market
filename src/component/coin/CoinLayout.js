@@ -1,7 +1,7 @@
-import { Box, Button, Card, CardContent, Chip, Divider, Grid, Skeleton, Typography } from '@mui/material';
-import { formatCurrency, formatNum } from '../header/GlobalData';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import TwitterIcon from '@mui/icons-material/Twitter';
+import { Box, Card, CardContent, Chip, Grid, Skeleton, Typography } from '@mui/material';
+import { formatCurrency, formatNum } from '../header/GlobalData';
 
 export const CoinMarketDataLayout = ({ title, num, type }) => {
   return (

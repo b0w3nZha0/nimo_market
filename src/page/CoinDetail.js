@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { CoinPage } from '../config/api';
-import { Box, Chip, Container, Divider, Grid, LinearProgress, Stack, Typography } from '@mui/material';
+import { Box, Breadcrumbs, Chip, Container, Divider, Grid, LinearProgress, Link, Stack, Typography } from '@mui/material';
 import axios from 'axios';
 import { formatCurrency, formatNum } from '../component/header/GlobalData';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
@@ -9,6 +9,7 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { CoinInfoURL, CoinMarketDataLayout } from '../component/coin/CoinLayout';
 import HistoryChart from '../component/coin/HistoryChart';
 import CoinOverview from '../component/coin/CoinInfo';
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 
 
 const CoinDetails = () => {
@@ -34,8 +35,8 @@ const CoinDetails = () => {
 
   useEffect(() => {
     fetchCoin();
-     // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[id])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id])
 
 
 
@@ -48,6 +49,35 @@ const CoinDetails = () => {
         justifyContent='flex-start'
         alignItems='center'
       >
+        {/* Breadcrumbs */}
+        <Grid
+          container
+          direction="row"
+          justifyContent="flex-start"
+          alignItems="center"
+          marginTop={4}
+        >
+          <Container>
+            <Breadcrumbs aria-label='breadcrumb'>
+              <Link
+                underline='hover'
+                color='orange'
+                href='/'
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center'
+                }}>
+                <HomeOutlinedIcon />
+                Nimo Marker
+              </Link>
+              <Typography>
+                {coin?.name}
+              </Typography>
+            </Breadcrumbs>
+          </Container>
+
+        </Grid>
+
         {/* coin's basic data & info */}
         <Grid container spacing={2} marginY={4}>
           {/* left colum, basic data */}
@@ -158,7 +188,7 @@ const CoinDetails = () => {
 
                     <Grid item>
                       <Typography color={'grey'} variant='body2'>
-                        Max supply: {formatNum(!maxSupply? 0 : maxSupply, 0, false)}
+                        Max supply: {formatNum(!maxSupply ? 0 : maxSupply, 0, false)}
                       </Typography>
                     </Grid>
                   </Grid>
@@ -273,28 +303,28 @@ const CoinDetails = () => {
                   </Grid>
 
                   <Grid item>
-                    <Chip 
-                      label='Ledger' 
-                      onClick={() => 
-                        window.location.href = 
+                    <Chip
+                      label='Ledger'
+                      onClick={() =>
+                        window.location.href =
                         'https://shop.ledger.com/pages/ledger-nano-x?utm_source=CoinGecko&utm_campaign=ADS-wallet&utm_medium=affiliate_button&r=bafa'
-                      } 
+                      }
                     />
-                    <Chip 
-                      label='Electrum' 
-                      onClick={() => 
-                        window.location.href = 
+                    <Chip
+                      label='Electrum'
+                      onClick={() =>
+                        window.location.href =
                         'https://electrum.org/'
-                      } 
+                      }
                     />
-                    <Chip 
-                      label='Xdefi' 
-                      onClick={() => 
-                        window.location.href = 
+                    <Chip
+                      label='Xdefi'
+                      onClick={() =>
+                        window.location.href =
                         'https://www.xdefi.io/'
-                      } 
+                      }
                     />
-                    
+
                   </Grid>
 
                 </Grid>
@@ -315,16 +345,16 @@ const CoinDetails = () => {
 
         <Grid container spacing={2} marginY={4}>
           <Container>
-           <HistoryChart />
+            <HistoryChart />
           </Container>
-          
+
         </Grid>
 
         <Grid container spacing={2} marginY={4}>
           <Container>
             <CoinOverview />
           </Container>
-          
+
         </Grid>
 
       </Grid>

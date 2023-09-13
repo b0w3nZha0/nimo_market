@@ -1,11 +1,10 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { CoinPage } from '../../config/api';
-import { Accordion, AccordionDetails, AccordionSummary, Card, CardContent, Grid, Skeleton, Typography } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { Accordion, AccordionDetails, AccordionSummary, Grid, Typography } from '@mui/material';
+import axios from 'axios';
 import { Markup } from 'interweave';
-import { formatNum } from '../header/GlobalData';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { CoinPage } from '../../config/api';
 import { CoinOverviewCard, PlaceHolder } from './CoinLayout';
 
 const Overview = () => {
@@ -26,6 +25,7 @@ const Overview = () => {
 
   useEffect(() => {
     fetchCoin();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

@@ -214,7 +214,7 @@ const CoinsTable = () => {
                                                 <Box sx={{flexGrow: 1}}>
                                                     <SparkLineChart
                                                         data={coin.sparkline_in_7d.price}
-                                                        height={'60'}
+                                                        height={60}
                                                     />
                                                 </Box>
 
