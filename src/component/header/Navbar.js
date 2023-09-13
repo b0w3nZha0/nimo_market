@@ -5,7 +5,6 @@ import Container from '@mui/material/Container';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
-import logo from '../../assets/logo.png';
 
 // Navbar including logo and site name
 const Navbar = () => {
@@ -29,7 +28,7 @@ const Navbar = () => {
                             alignItems="center"
                             spacing={2}
                         >
-                            <img src={logo} alt={logo} height='45' />
+                            <img src='../../assets/logo.png' alt='logo' height='45' />
                             <Typography variant='h4' fontWeight={'bold'} color={'black'}>
                                 {webTitle}
                             </Typography>
