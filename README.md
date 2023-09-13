@@ -1,70 +1,35 @@
-# Getting Started with Create React App
+# Nimo Market - Cryptocurrencies Tracker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project serves as Nimo Industries' code test, primarily designed to monitor cryptocurrency prices using data retrieved from the [CoinGecko](https://www.coingecko.com/) website via its [public API](https://www.coingecko.com/en/api/documentation).
 
-## Available Scripts
+The website has been deployed by **Vercel**. The link can be found at `About` section of repo.
 
-In the project directory, you can run:
+[TOC]
 
-### `npm start`
+## Install Node.js & npm
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+In order to run `**Nimo Market**` crypto currencies tracker, you have to install following components. If you already installed required components, please check support version and process to next section.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- The preferred version of `node` is version `v16.. and later`.
 
-### `npm test`
+- The preferred version of `node` is version `v9.. and later`.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- If you don't have `node` and `npm` installed, click link below to install `node` and `npm`.
 
-### `npm run build`
+- [Download NODE and NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- After installation, open any `command line` and type in `node -v` and `npm -v` to check installed version of node.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Run Application
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- When first running this application, you need to run `**npm install**` command first to install required packages needed to run the application. If the installation showing errors, please run `**npm install --force**` to install the packages. Sometimes the installation fails due to compatibility issues.
+- After installed all packages, simply run `**npm start**` to run the React.js application and the frontend application will be run on localhost with specific path of the port.
+- The default port path is http://localhost:3000/
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Known Issues
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- The landing page's table may become stacked during loading, which could be a result of the API request being blocked due to a high frequency of requests. We recommend trying again later.
