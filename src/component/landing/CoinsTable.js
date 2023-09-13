@@ -38,8 +38,8 @@ const CoinsTable = () => {
     const fetchCoinsTable = async () => {
         try {
             setLoading(true);
-            //const res = await axios.get(CoinsMarket(100, page));
-            const res = await axios.get();
+            const res = await axios.get(CoinsMarket(100, page));
+            //const res = await axios.get();
             const data = res.data;
             console.log(data);
             setCoins(data);
@@ -208,7 +208,7 @@ const CoinsTable = () => {
                                                 {formatCurrency(coin.total_volume, 0, false)}
                                             </StyledTableCell>
 
-                                            <StyledTableCell align='left'>
+                                            <StyledTableCell align='right' width={'150'}>
                                                 <Box sx={{flexGrow: 1}}>
                                                     <SparkLineChart
                                                         data={coin.sparkline_in_7d.price}
