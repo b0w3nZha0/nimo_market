@@ -4,6 +4,8 @@ import { Box, Tab } from '@mui/material';
 import Overview from './Overview';
 import PriceStatistics from './PriceStatistics';
 
+// Container of informtaion section under history chart
+// Include Overview and PriceStatistics(TODO)
 const CoinInfo = () => {
 
   const [tabVal, setTabVal] = useState('1');
@@ -15,7 +17,7 @@ const CoinInfo = () => {
   return (
     <Box>
       <TabContext value={tabVal}>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider'}}>
+        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <TabList onChange={handleTabChange}>
             <Tab label='Overview' value='1' />
             <Tab label='Price Statistics' value='2' />

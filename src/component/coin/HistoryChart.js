@@ -28,6 +28,7 @@ ChartJS.register(
   Legend
 );
 
+// History chart for individual coin
 const HistoryChart = () => {
   const { id } = useParams();
   const [historyData, setHistoryData] = useState();
@@ -51,7 +52,7 @@ const HistoryChart = () => {
     fetchHistoryData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [days])
-  
+
 
   const chartOptions = {
     responsive: true
@@ -79,19 +80,20 @@ const HistoryChart = () => {
 
   return (
     <Box>
-
       <Grid
         container
         direction="row"
         justifyContent="space-between"
         alignItems="center"
       >
+        {/* Chart title with coin name */}
         <Grid item>
           <Typography variant='h4'>
             {id.toUpperCase()} Price Chart
           </Typography>
         </Grid>
 
+        {/* Button to select chart range */}
         <Grid item>
           <ToggleButtonGroup
             value={days}
@@ -125,9 +127,9 @@ const HistoryChart = () => {
             </ToggleButton>
           </ToggleButtonGroup>
         </Grid>
-
       </Grid>
 
+      {/* Generate line chart if history data available */}
       {!historyData ? (< CircularProgress />) : (
         <Line
           options={chartOptions}
@@ -139,4 +141,4 @@ const HistoryChart = () => {
   )
 }
 
-export default HistoryChart
+export default HistoryChart;
