@@ -223,7 +223,7 @@ const CoinDetails = () => {
                 sx={{ display: { xs: 'flex', md: 'flex' } }}
               >
                 <Typography variant='h5' fontWeight={'bold'}>
-                  Global Bitcoin Prices
+                  Infomation
                 </Typography>
 
                 <CoinInfoURL
