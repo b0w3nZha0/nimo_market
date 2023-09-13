@@ -68,7 +68,7 @@ const CoinDetails = () => {
                   alignItems: 'center'
                 }}>
                 <HomeOutlinedIcon />
-                Nimo Marker
+                Nimo Market
               </Link>
               <Typography>
                 {coin?.name}
