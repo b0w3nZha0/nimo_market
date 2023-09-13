@@ -8,6 +8,7 @@ import {
     Divider,
     LinearProgress,
     Pagination,
+    Stack,
     Table,
     TableBody,
     TableCell,
@@ -31,7 +32,7 @@ const CoinsTable = () => {
 
     useEffect(() => {
         fetchCoinsTable();
-         // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [page]);
 
     const fetchCoinsTable = async () => {
@@ -55,8 +56,8 @@ const CoinsTable = () => {
     });
 
     return (
-        <Container style={{ textAlign: 'center' }}>
-            <Typography variant='h4' style={{ margin: 20 }}>
+        <Container style={{ textAlign: 'center' }} maxWidth='lg'>
+            <Typography variant='h4' style={{ margin: 20 }} fontWeight={'bold'}>
                 Cryptocurrency Prices by Market Cap
             </Typography>
 
@@ -85,143 +86,145 @@ const CoinsTable = () => {
                             }}
                         />
                         <Table>
-                        
-                        <TableHead>
-                            <TableRow>
-                                {[
-                                    '#',
-                                    'Coin',
-                                    'Price',
-                                    '1h',
-                                    '24h',
-                                    '7d',
-                                    'Market Cap',
-                                    'Volume',
-                                    'Last 7 Days',
-                                ].map((head) => (
-                                    <TableCell
-                                        key={head}
-                                        align={head === 'Coin' ? '' : 'right'}
-                                    >
-                                        {head}
-                                    </TableCell>
-                                ))}
-                            </TableRow>
-                        </TableHead>
 
-                        <TableBody>
-
-
-                            {coins.map((coin) => {
-                                return (
-                                    <TableRow
-                                        onClick={() => navigate(`/coin/${coin.id}`)}
-                                        className={coin.id}
-                                        keu={coin.name}
-                                    >
-                                        <StyledTableCell align='right'>
-                                            <Typography>{coin.market_cap_rank}</Typography>
-                                        </StyledTableCell>
-
-                                        <StyledTableCell
-                                            component='th'
-                                            scope='row'
-                                            styles={{
-                                                display: 'flex',
-                                            }}
+                            <TableHead>
+                                <TableRow>
+                                    {[
+                                        '#',
+                                        'Coin',
+                                        'Price',
+                                        '1h',
+                                        '24h',
+                                        '7d',
+                                        'Market Cap',
+                                        'Volume',
+                                        'Last 7 Days',
+                                    ].map((head) => (
+                                        <TableCell
+                                            key={head}
+                                            align={head === 'Coin' ? '' : 'right'}
                                         >
-                                            <div
-                                                style={{ display: 'inline-flex', alignSelf: 'center' }}
+                                            {head}
+                                        </TableCell>
+                                    ))}
+                                </TableRow>
+                            </TableHead>
+
+                            <TableBody>
+
+
+                                {coins.map((coin) => {
+                                    return (
+                                        <TableRow
+                                            onClick={() => navigate(`/coin/${coin.id}`)}
+                                            className={coin.id}
+                                            key={coin.name}
+                                        
+                                        >
+                                            <StyledTableCell align='right'>
+                                                <Typography>{coin.market_cap_rank}</Typography>
+                                            </StyledTableCell>
+
+                                            <StyledTableCell
+                                                component='th'
+                                                scope='row'
+                                                styles={{
+                                                    display: 'flex',
+                                                }}
                                             >
-                                                <img src={coin?.image} alt={coin.name} height='20' />
-                                                <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                                    <span>{coin.name}</span>
-                                                    <span
-                                                        style={{
-                                                            textTransform: 'uppercase',
-                                                            color: 'darkgrey',
-                                                        }}
-                                                    >
+                                                <Stack
+                                                    direction="row"
+                                                    justifyContent="flex-start"
+                                                    alignItems="center"
+                                                    spacing={2}
+                                                >
+                                                    <img src={coin.image} alt={coin.name} height='20' />
+                                                    <Typography fontWeight={'bold'}>
+                                                        {coin.name}
+                                                    </Typography>
+                                                    <Typography textTransform={'uppercase'} color={'grey'}>
                                                         {coin.symbol}
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </StyledTableCell>
+                                                    </Typography>
+                                                </Stack>
 
-                                        <StyledTableCell align='right'>
-                                            {formatCurrency(coin.current_price, 2, true)}
-                                        </StyledTableCell>
+                                            </StyledTableCell>
 
-                                        <StyledTableCell
-                                            align='right'
-                                            style={{
-                                                color:
-                                                    coin.price_change_percentage_1h_in_currency > 0
-                                                        ? 'rgb(14, 203, 129)'
-                                                        : 'red',
-                                            }}
-                                        >
-                                            <span>
-                                                {coin.price_change_percentage_1h_in_currency.toFixed(2)}
-                                                %
-                                            </span>
-                                        </StyledTableCell>
+                                            <StyledTableCell align='right'>
+                                                {formatCurrency(coin.current_price, 2, true)}
+                                            </StyledTableCell>
 
-                                        <StyledTableCell
-                                            align='right'
-                                            style={{
-                                                color:
-                                                    coin.price_change_percentage_24h_in_currency > 0
-                                                        ? 'rgb(14, 203, 129)'
-                                                        : 'red',
-                                            }}
-                                        >
-                                            <span>
-                                                {coin.price_change_percentage_24h_in_currency.toFixed(
-                                                    2
-                                                )}
-                                                %
-                                            </span>
-                                        </StyledTableCell>
+                                            <StyledTableCell
+                                                align='right'
+                                                style={{
+                                                    color:
+                                                        coin.price_change_percentage_1h_in_currency > 0
+                                                            ? 'rgb(14, 203, 129)'
+                                                            : 'red',
+                                                }}
+                                            >
+                                                <span>
+                                                    {coin.price_change_percentage_1h_in_currency?.toFixed(2)}
+                                                    %
+                                                </span>
+                                            </StyledTableCell>
 
-                                        <StyledTableCell
-                                            align='right'
-                                            style={{
-                                                color:
-                                                    coin.price_change_percentage_7d_in_currency > 0
-                                                        ? 'rgb(14, 203, 129)'
-                                                        : 'red',
-                                            }}
-                                        >
-                                            <span>
-                                                {coin.price_change_percentage_7d_in_currency.toFixed(2)}
-                                                %
-                                            </span>
-                                        </StyledTableCell>
+                                            <StyledTableCell
+                                                align='right'
+                                                style={{
+                                                    color:
+                                                        coin.price_change_percentage_24h_in_currency > 0
+                                                            ? 'rgb(14, 203, 129)'
+                                                            : 'red',
+                                                }}
+                                            >
+                                                <span>
+                                                    {coin.price_change_percentage_24h_in_currency?.toFixed(
+                                                        2
+                                                    )}
+                                                    %
+                                                </span>
+                                            </StyledTableCell>
 
-                                        <StyledTableCell align='right'>
-                                            {formatCurrency(coin.market_cap, 0, false)}
-                                        </StyledTableCell>
+                                            <StyledTableCell
+                                                align='right'
+                                                style={{
+                                                    color:
+                                                        coin.price_change_percentage_7d_in_currency > 0
+                                                            ? 'rgb(14, 203, 129)'
+                                                            : 'red',
+                                                }}
+                                            >
+                                                <span>
+                                                    {coin.price_change_percentage_7d_in_currency?.toFixed(2)}
+                                                    %
+                                                </span>
+                                            </StyledTableCell>
 
-                                        <StyledTableCell align='right'>
-                                            {formatCurrency(coin.total_volume, 0, false)}
-                                        </StyledTableCell>
+                                            <StyledTableCell align='right'>
+                                                {formatCurrency(coin.market_cap, 0, false)}
+                                            </StyledTableCell>
 
-                                        <StyledTableCell align='left'>
-                                            <Box sx={{ flexGrow: 1 }}>
-                                                <SparkLineChart
-                                                    data={coin.sparkline_in_7d.price}
-                                                    height={'55'}
-                                                />
-                                            </Box>
-                                        </StyledTableCell>
-                                    </TableRow>
-                                );
-                            })}
-                        </TableBody>
-                    </Table>
+                                            <StyledTableCell align='right'>
+                                                {formatCurrency(coin.total_volume, 0, false)}
+                                            </StyledTableCell>
+
+                                            <StyledTableCell align='right' width={'150'}>
+                                                <Box sx={{flexGrow: 1}}>
+                                                    <SparkLineChart
+                                                        data={coin.sparkline_in_7d.price}
+                                                        height={'60'}
+                                                    />
+                                                </Box>
+
+
+                                            </StyledTableCell>
+                                        </TableRow>
+                                    );
+                                })}
+                            </TableBody>
+                        </Table>
                     </Box>
-                    
+
                 )}
             </TableContainer>
 
