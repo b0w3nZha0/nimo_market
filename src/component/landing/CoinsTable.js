@@ -27,17 +27,18 @@ const CoinsTable = () => {
 
     const [coins, setCoins] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [page, setPage] = useState(1);
+    const [page, setPage] = useState('1');
 
     useEffect(() => {
         fetchCoinsTable();
+         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [page]);
 
     const fetchCoinsTable = async () => {
         try {
             setLoading(true);
-            //const res = await axios.get(CoinsMarket(100, page));
-            const res = await axios.get();
+            const res = await axios.get(CoinsMarket(100, page));
+            //const res = await axios.get();
             const data = res.data;
             console.log(data);
             setCoins(data);
@@ -59,30 +60,32 @@ const CoinsTable = () => {
                 Cryptocurrency Prices by Market Cap
             </Typography>
 
-            <Pagination
-                style={{
-                    padding: 20,
-                    width: '100%',
-                    display: 'flex',
-                    justifyContent: 'center',
-                }}
-                count={100} 
-                showFirstButton 
-                showLastButton
-                onChange={(e, value) => {
-                    setPage(value);
-                    window.scroll(0,450);
-                    console.log(value);
-                }}
-            />
+
 
             <Divider />
             <TableContainer>
                 {loading ? (
                     <LinearProgress />
                 ) : (
-                    <Table>
-
+                    <Box>
+                        <Pagination
+                            style={{
+                                padding: 20,
+                                width: '100%',
+                                display: 'flex',
+                                justifyContent: 'center',
+                            }}
+                            count={100}
+                            showFirstButton
+                            showLastButton
+                            onChange={(e, value) => {
+                                setPage(value);
+                                window.scroll(0, 450);
+                                console.log(value);
+                            }}
+                        />
+                        <Table>
+                        
                         <TableHead>
                             <TableRow>
                                 {[
@@ -217,6 +220,8 @@ const CoinsTable = () => {
                             })}
                         </TableBody>
                     </Table>
+                    </Box>
+                    
                 )}
             </TableContainer>
 

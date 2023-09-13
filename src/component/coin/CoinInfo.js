@@ -4,7 +4,7 @@ import { Box, Tab } from '@mui/material';
 import Overview from './Overview';
 import PriceStatistics from './PriceStatistics';
 
-const CoinOverview = () => {
+const CoinInfo = () => {
 
   const [tabVal, setTabVal] = useState('1');
 
@@ -32,4 +32,4 @@ const CoinOverview = () => {
   )
 }
 
-export default CoinOverview
+export default CoinInfo;
